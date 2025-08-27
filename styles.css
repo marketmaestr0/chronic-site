@@ -192,3 +192,73 @@ body {
   opacity: 1;
   transform: translate(-50%, -100%);
 }
+
+
+
+
+
+/* --- Global helpers for long addresses --- */
+.ca-box {
+  max-width: 90vw;              /* keep boxes inside small screens */
+}
+.contract-address {
+  overflow-wrap: anywhere;       /* allow breaks anywhere in the long CA */
+  word-break: break-word;        /* extra safety for older browsers */
+}
+
+/* --- Base: make header links tighter --- */
+.site-header .socials {
+  display: flex;
+  align-items: center;
+  gap: 10px;                     /* replace big margins with a small gap */
+}
+.site-header .socials a { margin-left: 0; }  /* gap handles spacing */
+
+/* =========================
+   Tablet and down (<= 768px)
+   ========================= */
+@media (max-width: 768px) {
+  /* 1) Header: shrink text so it stays on one line */
+  .site-header { padding: 0 12px; height: 56px; }
+  .site-header .logo { font-size: 1rem; letter-spacing: 1px; }
+  .site-header .socials a { font-size: 0.9rem; }
+
+  /* 2) Hero CA: smaller text, allow wrap */
+  .contract-address { font-size: 0.9rem; }
+
+  /* 3) Tokenomics list indent */
+  .tokenomics .container { padding: 0 16px; } /* extra inner padding */
+  .tokenomics ul { padding-left: 1.25rem; }   /* clear bullet indent */
+
+  /* 4) Footer CA: same treatment */
+  .site-footer .contract-address { font-size: 0.9rem; }
+}
+
+/* =========================
+   Small phones (<= 480px)
+   ========================= */
+@media (max-width: 480px) {
+  /* 1) Header: keep on one line */
+  .site-header { padding: 0 10px; height: 54px; }
+  .site-header .logo { font-size: 0.95rem; letter-spacing: 0.5px; }
+  .site-header .socials { gap: 8px; }
+  .site-header .socials a { font-size: 0.85rem; }
+
+  /* 2) Hero sizing */
+  .hero { gap: 6px; }
+  .hero-logo { max-height: 90px; }             /* reduce logo height */
+  .buy-button { font-size: 1.1rem; padding: 6px 12px; }  /* smaller CTA */
+  .ca-box { padding: 8px 12px; }               /* slimmer box */
+  .contract-address { font-size: 0.85rem; }
+
+  /* 3) Tokenomics spacing/size */
+  .tokenomics { padding: 56px 16px; }          /* less vertical padding */
+  .tokenomics h2 { font-size: 1.4rem; letter-spacing: 0.15rem; }
+  .tokenomics ul { padding-left: 1.1rem; }
+  .tokenomics li { margin-bottom: 6px; }
+
+  /* 4) Footer CA width + size */
+  .site-footer { padding: 28px 16px; }
+  .site-footer .ca-box { max-width: 90vw; padding: 8px 12px; }
+  .site-footer .contract-address { font-size: 0.85rem; }
+}
