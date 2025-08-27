@@ -24,7 +24,6 @@
 
 <!-- Hero -->
 <section class="hero">
-    <img class="hero-bg" src="images/Leaf 2 Wide.webp" alt="" aria-hidden="true" data-speed="0.35">
     <img src="images/CHRONIC TEXT LOGO.webp" alt="CHRONIC" class="hero-logo">
 
   <!-- separate button -->
@@ -119,48 +118,6 @@
 })();
 </script>
 
-
-
-<script>
-(() => {
-  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (prefersReduced) return;
-
-  const parallaxImg = document.querySelector('.hero-bg');
-  if (!parallaxImg) return;
-
-  // Speed factor from data attribute (typical 0.2–0.5). Positive = moves slower than scroll.
-  const speed = parseFloat(parallaxImg.dataset.speed || '0.35');
-
-  let ticking = false;
-
-  function update() {
-    ticking = false;
-
-    const rect = parallaxImg.parentElement.getBoundingClientRect();
-    const viewportH = window.innerHeight || document.documentElement.clientHeight;
-
-    // Center-based progress (-1 at far above, 0 when centered in viewport, +1 far below)
-    const centerOffset = (rect.top + rect.height / 2) - (viewportH / 2);
-    // Translate proportionally; tweak multiplier for taste
-    const translateY = centerOffset * -speed;
-
-    parallaxImg.style.transform = `translate3d(0, ${translateY}px, 0)`;
-  }
-
-  function onScrollOrResize() {
-    if (!ticking) {
-      ticking = true;
-      requestAnimationFrame(update);
-    }
-  }
-
-  // Run once and on events
-  update();
-  window.addEventListener('scroll', onScrollOrResize, { passive: true });
-  window.addEventListener('resize', onScrollOrResize);
-})();
-</script>
 
 
 </body>

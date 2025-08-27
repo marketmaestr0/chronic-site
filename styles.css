@@ -46,40 +46,14 @@ body {
 .hero {
   position: relative;
   height: 40vh;
-
+  background: url("images/Leaf 2 Wide.webp") no-repeat center center / cover;
   display: flex;
-  flex-direction: column;
+  flex-direction: column;  /* stack children vertically */
   align-items: center;
   justify-content: center;
   text-align: center;
-  gap: 5px;
-  overflow: hidden; /* important to clip the moving bg */
+  gap: 5px; /* spacing between elements */
 }
-
-/* Parallax image layer */
-.hero-bg {
-  position: absolute;
-  inset: -10% 0 -10% 0;     /* slightly oversized to avoid edges on move */
-  width: 100%;
-  height: 120%;              /* extra height so movement doesn’t expose gaps */
-  object-fit: cover;
-  transform: translate3d(0, 0, 0);
-  will-change: transform;
-  pointer-events: none;
-  z-index: 0;                /* behind your content */
-}
-
-/* Make sure hero content sits above the bg */
-.hero > *:not(.hero-bg) {
-  position: relative;
-  z-index: 1;
-}
-
-/* Respect prefers-reduced-motion */
-@media (prefers-reduced-motion: reduce) {
-  .hero-bg { transform: none !important; }
-}
-
 
 .hero-logo {
   display: block;
