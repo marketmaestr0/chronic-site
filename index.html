@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CHRONIC</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Goldman:wght@400;700&family=Rubik+Dirt&display=swap" rel="stylesheet">
+
+</head>
+<body>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="logo">CHRONIC</div>
+    <nav class="socials">
+      <!-- Replace # with links -->
+      <a href="https://x.com/chroniccoin420" target="_blank" rel="noopener noreferrer">X</a>
+      <a href="https://t.me/+GfU8C48sxdZhMzkx" target="_blank" rel="noopener noreferrer">Telegram</a>
+      <a href="https://dexscreener.com/base/0xd996A4C4721037cA0AbB92c53d380aae0cBfD3ca" target="_blank" rel="noopener noreferrer">DEX Screener</a>
+    </nav>
+  </header>
+
+<!-- Hero -->
+<section class="hero">
+    <img src="images/CHRONIC TEXT LOGO.webp" alt="CHRONIC" class="hero-logo">
+
+  <!-- separate button -->
+  <a href="https://example.com/buy" class="buy-button">BUY</a>
+
+  <!-- tinted box just for CA -->
+  <div class="ca-box" id="copy-ca"
+       data-ca="0xd996A4C4721037cA0AbB92c53d380aae0cBfD3ca"
+       title="Click to copy">
+    <p class="contract-address">CA: 0xd996A4C4721037cA0AbB92c53d380aae0cBfD3ca</p>
+  </div>
+</section>
+
+  <!-- Tokenomics -->
+  <section class="tokenomics">
+    <div class="container">
+      <h2>Tokenomics</h2>
+      <ul>
+        <li>1,000,000,000 total supply</li>
+        <li>Fully locked liquidity!</li>
+        <li>All fees will be used to buy $CHRONIC and then burnt. The more volume, the more $CHRONIC gets burnt!</li>
+      </ul>
+    </div>
+    <div class="tagline">
+      <p>Let's get our bags high AF by burning $CHRONIC together!</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+<footer class="site-footer">
+  <div class="ca-box" id="copy-ca-footer"
+       data-ca="0xd996A4C4721037cA0AbB92c53d380aae0cBfD3ca"
+       title="Click to copy">
+    <p class="contract-address">CA: 0xd996A4C4721037cA0AbB92c53d380aae0cBfD3ca</p>
+  </div>
+  <p>
+    Launched on the 
+    <a href="https://wildwestlaunch.xyz/" target="_blank" rel="noopener noreferrer">
+      WILDWEST LAUNCHPAD
+    </a>
+  </p>
+</footer>
+
+  
+
+<script>
+(() => {
+  function fallbackCopy(text) {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.top = '-1000px';
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand('copy'); } finally { document.body.removeChild(ta); }
+  }
+
+  async function copyText(text) {
+    if (navigator.clipboard && window.isSecureContext) {
+      await navigator.clipboard.writeText(text);
+    } else {
+      fallbackCopy(text);
+    }
+  }
+
+  function setupCopy(el) {
+    if (!el) return;
+    const ca = el.dataset.ca;
+    el.addEventListener('click', async () => {
+      try {
+        await copyText(ca);
+        el.classList.add('copied');
+        el.setAttribute('data-feedback', 'Copied!');
+        setTimeout(() => {
+          el.classList.remove('copied');
+          el.removeAttribute('data-feedback');
+        }, 1500);
+      } catch {
+        el.setAttribute('data-feedback', 'Copy failed');
+        el.classList.add('copied');
+        setTimeout(() => {
+          el.classList.remove('copied');
+          el.removeAttribute('data-feedback');
+        }, 1500);
+      }
+    });
+  }
+
+  // Hero + Footer
+  setupCopy(document.getElementById('copy-ca'));
+  setupCopy(document.getElementById('copy-ca-footer'));
+})();
+</script>
+
+
+
+</body>
+</html>
