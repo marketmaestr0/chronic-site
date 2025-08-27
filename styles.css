@@ -1,0 +1,194 @@
+/* Reset / base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Goldman', Arial, Helvetica, sans-serif;
+  line-height: 1.6;
+  color: #f0f0f0;
+  background: #0e0e0e;
+  padding-top: 60px;
+}
+
+/* Header */
+.site-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 60px;
+  background: linear-gradient(130deg, #131b01,#253204);
+  /*background: rgba(20,20,20,0.95);*/
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  z-index: 1000;
+}
+.site-header .logo {
+  font-weight: bold;
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+  font-family: 'Rubik Dirt';
+}
+.site-header .socials a {
+  margin-left: 15px;
+  color: #f0f0f0;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+.site-header .socials a:hover {
+  color: #eaff00;
+}
+
+/* Hero section */
+.hero {
+  position: relative;
+  height: 40vh;
+  background: url("images/Leaf 2 Wide.webp") no-repeat center center / cover;
+  display: flex;
+  flex-direction: column;  /* stack children vertically */
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 5px; /* spacing between elements */
+}
+
+.hero-logo {
+  display: block;
+  max-width: 100%;    /* scales down on small screens */
+  height: auto;
+  max-height: 120px;  /* adjust this to control size */
+}
+
+/* Buy button */
+.buy-button {
+  display: inline-block;
+  padding: 6px 12px;
+  background: #eaff00;
+  color: #111;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: background 0.3s ease;
+  font-family: 'Rubik Dirt';
+  font-size: 1.5rem; /* increase font size here */
+}
+.buy-button:hover {
+  background: #62ff00;
+}
+
+/* CA tinted box */
+.ca-box {
+  background: rgba(4, 62, 7, 0.433);
+  padding: 10px 20px;
+  border-radius: 6px;
+  display: inline-block;
+  cursor: pointer;
+  position: relative;
+}
+
+/* small “Copied!” feedback */
+.ca-box::after {
+  content: attr(data-feedback);
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, 8px);
+  background: #eaff00;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  color: #000000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .2s, transform .2s;
+  font-family: 'Goldman', sans-serif;
+}
+.ca-box.copied::after {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+.contract-address {
+  margin: 0;
+  font-size: 1rem;
+  color: #fff;
+  font-family: 'Goldman', sans-serif;
+}
+/* Tokenomics */
+.tokenomics {
+  padding: 80px 20px;
+  background: linear-gradient(130deg, #394c0b,#253204);
+}
+.tokenomics .container {
+  max-width: 900px;
+  margin: auto;
+}
+.tokenomics h2 {
+  font-size: 2rem;
+  letter-spacing: 0.3rem;
+  margin-bottom: 20px;
+  font-family: 'Goldman', sans-serif;
+}
+.tokenomics p {
+  font-size: 1.1rem;
+  color: #ddd;
+  font-family: 'Goldman', sans-serif;
+}
+
+.tagline p {
+  font-size: 1rem;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding-top: 1rem;
+}
+
+/* Footer */
+.site-footer {
+  text-align: center;
+  padding: 40px 20px;
+  background: #111;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  font-size: 0.9rem;
+  color: #bbb;
+  font-family: 'Goldman', sans-serif;
+}
+.ca-footer {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+}
+
+.site-footer a {
+  color: inherit;           /* same color as surrounding text */
+  text-decoration: none;    /* remove underline */
+  font-weight: inherit;     /* same weight as surrounding text */
+}
+
+.site-footer a:hover {
+  text-decoration: underline; /* optional subtle hover effect */
+}
+
+
+/* optional tooltip feedback */
+.ca-footer::after {
+  content: attr(data-feedback);
+  position: absolute;
+  top: -150%; /* above text */
+  left: 50%;
+  transform: translateX(-50%);
+  background: #eaff00;
+  color: #111;
+  font-size: 0.85rem;
+  padding: 4px 8px;
+  border-radius: 4px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .2s, transform .2s;
+}
+.ca-footer.copied::after {
+  opacity: 1;
+  transform: translate(-50%, -100%);
+}
