@@ -13,7 +13,7 @@
 <body>
   <!-- Header -->
   <header class="site-header">
-    <div class="logo">CHRONIC</div>
+    <div class="logo">$CHRONIC</div>
     <nav class="socials">
       <!-- Replace # with links -->
       <a href="https://x.com/chroniccoin420" target="_blank" rel="noopener noreferrer">X</a>
@@ -23,13 +23,33 @@
   </header>
 
 <!-- Hero -->
+
 <section class="hero">
-    <img src="images/CHRONIC TEXT LOGO.webp" alt="CHRONIC" class="hero-logo">
+  <!-- Background stack -->
+  <div class="hero__bg" aria-hidden="true">
+    <video class="hero__video"
+           autoplay
+           muted
+           loop
+           playsinline
+           preload="metadata"
+           poster="images/Leaf-no-glow.webp">
+      <!-- Adjust filenames as needed -->
+      <source src="images/background-ripples-slowed.webm" type="video/webm" />
+      <source src="images/background-ripples/hero-ripples.mp4"  type="video/mp4" />
+    </video>
 
-  <!-- separate button -->
-  <a href="https://app.uniswap.org/swap?inputCurrency=ETH&outputCurrency=0xd996A4C4721037cA0AbB92c53d380aae0cBfD3ca&chain=base" target="_blank" class="buy-button">BUY</a>
+    <!-- Transparent overlay above the video -->
+    <img class="hero__overlay" src="images/Leaf-no-glow.webp" alt="" aria-hidden="true">
+  </div>
 
-  <!-- tinted box just for CA -->
+  <!-- Your existing hero content (unchanged) -->
+  <img src="images/420token-text.webp" alt="420token" class="hero-logo">
+  <img src="images/$CHRONIC TEXT LOGO.webp" alt="CHRONIC" class="hero-logo-sub">
+
+  <a href="https://app.uniswap.org/swap?inputCurrency=ETH&outputCurrency=0xd996A4C4721037cA0AbB92c53d380aae0cBfD3ca&chain=base"
+     target="_blank" class="buy-button">BUY</a>
+
   <div class="ca-box" id="copy-ca"
        data-ca="0xd996A4C4721037cA0AbB92c53d380aae0cBfD3ca"
        title="Click to copy">

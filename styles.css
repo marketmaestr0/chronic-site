@@ -47,21 +47,102 @@ body {
 /* Hero section */
 .hero {
   position: relative;
+  isolation: isolate;             /* keep bg layers behind content */
   height: 40vh;
-  background: url("images/Leaf 2 Wide.webp") no-repeat center center / cover;
   display: flex;
-  flex-direction: column;  /* stack children vertically */
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  gap: 5px; /* spacing between elements */
+  gap: 1rem;
+  /* background: url("images/Leaf 2 Wide.webp") no-repeat center / cover;  <-- remove */
+}
+
+/* Background container */
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;           /* clicks go through to buttons/links */
+}
+
+/* Video fills like CSS background-size: cover */
+.hero__video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Transparent leaf overlay image above the video */
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;              /* or 'contain' if you need exact framing */
+  object-position: center;
+
+  /* base glow + prep for animation */
+  will-change: filter;
+  filter:
+    drop-shadow(0 0 8px rgba(7, 88, 18, 0.3))   /* inner glow */
+    drop-shadow(0 0 22px rgba(40, 173, 58, 0.3)); /* outer glow */
+  animation: overlay-glow 5s ease-in-out infinite;
+}
+
+@keyframes overlay-glow {
+  0%, 100% {
+    filter:
+      drop-shadow(0 0 6px  rgba(7, 88, 18, 0.3))
+      drop-shadow(0 0 18px rgba(40, 173, 58, 0.3));
+  }
+  33% {
+    filter:
+      drop-shadow(0 0 14px rgba(200, 228, 17, 0.7))
+      drop-shadow(0 0 36px rgba(232, 255, 85, 0.7));
+  }
+  66% {
+    filter:
+      drop-shadow(0 0 14px rgba(253, 154, 6, 0.7))
+      drop-shadow(0 0 36px rgba(65, 42, 7, 0.7));
+  }
+}
+
+/* Motion-friendly fallback */
+@media (prefers-reduced-motion: reduce) {
+  .hero__overlay { animation: none; }
+}
+
+/* Ensure your hero content is above the background stack */
+.hero > :not(.hero__bg) {
+  position: relative;
+  z-index: 1;
+}
+
+/* Motion/data fallbacks */
+@media (prefers-reduced-motion: reduce) {
+  .hero__video { display: none; }
 }
 
 .hero-logo {
   display: block;
-  max-width: 100%;    /* scales down on small screens */
+  max-width: 50rem;    /* scales down on small screens */
   height: auto;
-  max-height: 120px;  /* adjust this to control size */
+  display: inline-block;              /* helps with layout quirks */
+  filter: drop-shadow(0 0 9px rgb(0, 0, 0));
+}
+
+
+.hero-logo-sub {
+  display: block;
+  max-width: 25rem;    /* scales down on small screens */
+  height: auto;
+  display: inline-block;              /* helps with layout quirks */
+  filter: drop-shadow(0 0 9px rgb(0, 0, 0));
 }
 
 /* Buy button */
@@ -73,12 +154,38 @@ body {
   font-weight: bold;
   text-decoration: none;
   border-radius: 6px;
-  transition: background 0.3s ease;
+  transition: background, scale 0.3s ease;
   font-family: 'Rubik Dirt';
   font-size: 1.5rem; /* increase font size here */
+
+  /* set a stable base */
+  transform: scale(1);
+  transform-origin: center;
+  will-change: transform;
+
+  /* only transition the color; the size will be handled by animation */
+  transition: background-color 0.3s ease;
+
 }
-.buy-button:hover {
+
+.buy-button:hover,
+.buy-button:focus-visible {
   background: #62ff00;
+  animation: btn-pulse 1s ease-in-out infinite;
+}
+
+@keyframes btn-pulse {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.08); } /* adjust 1.04–1.10 to taste */
+}
+
+/* Optional: respect users who prefer less motion */
+@media (prefers-reduced-motion: reduce) {
+  .buy-button:hover,
+  .buy-button:focus-visible {
+    animation: none;
+    transform: scale(1.05); /* simple one-off grow instead */
+  }
 }
 
 /* CA tinted box */
