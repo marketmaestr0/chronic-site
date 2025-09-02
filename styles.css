@@ -42,6 +42,7 @@ body {
 }
 .site-header .socials a:hover {
   color: #eaff00;
+  cursor: pointer;
 }
 
 /* Hero section */
@@ -88,31 +89,31 @@ body {
   /* base glow + prep for animation */
   will-change: filter;
   filter:
-    drop-shadow(0 0 8px rgba(7, 88, 18, 0.3))   /* inner glow */
-    drop-shadow(0 0 22px rgba(40, 173, 58, 0.3)); /* outer glow */
-  animation: overlay-glow 5s ease-in-out infinite;
+    drop-shadow(0 0 10px rgba(7, 88, 18, 0.3))   /* inner glow */
+    drop-shadow(0 0 24px rgba(40, 173, 58, 0.3)); /* outer glow */
+  animation: leaf-overlay-glow 5s ease-in-out infinite;
 }
 
-@keyframes overlay-glow {
+@keyframes leaf-overlay-glow {
   0%, 100% {
     filter:
-      drop-shadow(0 0 6px  rgba(7, 88, 18, 0.3))
-      drop-shadow(0 0 18px rgba(40, 173, 58, 0.3));
+      drop-shadow(0 0 8px  rgba(7, 88, 18, 0.665))
+      drop-shadow(0 0 16px rgba(40, 173, 58, 0.477));
   }
   25% {
     filter:
-      drop-shadow(0 0 14px rgba(200, 228, 17, 0.7))
-      drop-shadow(0 0 36px rgba(232, 255, 85, 0.7));
+      drop-shadow(0 0 16px rgba(200, 228, 17, 0.7))
+      drop-shadow(0 0 30px rgba(232, 255, 85, 0.7));
   }
   50% {
     filter:
-    drop-shadow(0 0 6px  rgba(7, 88, 18, 0.3))
-    drop-shadow(0 0 18px rgba(40, 173, 58, 0.3));
+    drop-shadow(0 0 8px  rgba(7, 88, 18, 0.665))
+    drop-shadow(0 0 16px rgba(40, 173, 58, 0.477));
   }
   75% {
     filter:
-      drop-shadow(0 0 14px rgba(253, 154, 6, 0.7))
-      drop-shadow(0 0 36px rgba(65, 42, 7, 0.7));
+    drop-shadow(0 0 8px rgba(255, 179, 66, 0.7))
+    drop-shadow(0 0 15px rgba(138, 86, 6, 0.7));
   }
 }
 
@@ -127,18 +128,39 @@ body {
   z-index: 1;
 }
 
-/* Motion/data fallbacks */
-@media (prefers-reduced-motion: reduce) {
-  .hero__video { display: none; }
-}
-
 .hero-logo {
   display: block;              /* you don't need inline-block inside a flex parent */
   width: 100%;                 /* fill available space */
   max-width: 50rem;            /* but never exceed 50rem */
   height: auto;                /* keep aspect ratio */
   filter: drop-shadow(0 0 9px #000);
+  animation: logo-overlay-glow 6s ease-in-out infinite;
 }
+
+
+@keyframes logo-overlay-glow {
+  0%, 100% {
+    filter:
+      drop-shadow(0 0 4px  rgba(7, 88, 18, 0.665))
+      drop-shadow(0 0 8px rgba(40, 173, 58, 0.277));
+  }
+  25% {
+    filter:
+      drop-shadow(0 0 8px rgba(200, 228, 17, 0.7))
+      drop-shadow(0 0 15px rgba(232, 255, 85, 0.7));
+  }
+  50% {
+    filter:
+    drop-shadow(0 0 4px  rgba(7, 88, 18, 0.665))
+    drop-shadow(0 0 8px rgba(40, 173, 58, 0.277));
+  }
+  75% {
+    filter:
+      drop-shadow(0 0 8px rgba(255, 179, 66, 0.7))
+      drop-shadow(0 0 15px rgba(138, 86, 6, 0.7));
+  }
+}
+
 
 
 .hero-logo-sub {
@@ -175,12 +197,12 @@ body {
 .buy-button:hover,
 .buy-button:focus-visible {
   background: #62ff00;
-  animation: btn-pulse 1s ease-in-out infinite;
+  animation: btn-pulse 2s ease-in-out infinite;
 }
 
 @keyframes btn-pulse {
   0%, 100% { transform: scale(1); }
-  50%      { transform: scale(1.08); } /* adjust 1.04–1.10 to taste */
+  50%      { transform: scale(1.06); } /* adjust 1.04–1.10 to taste */
 }
 
 /* Optional: respect users who prefer less motion */
@@ -201,6 +223,10 @@ body {
   cursor: pointer;
   position: relative;
   margin-bottom: 1rem;
+}
+
+.ca-box:hover {
+  animation: logo-overlay-glow 6s ease-in-out infinite;
 }
 
 /* small “Copied!” feedback */
@@ -229,6 +255,7 @@ body {
   font-size: 1rem;
   color: #fff;
   font-family: 'Goldman', sans-serif;
+  cursor: pointer;
 }
 /* Tokenomics */
 .tokenomics {

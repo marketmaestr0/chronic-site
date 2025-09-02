@@ -32,11 +32,12 @@
            muted
            loop
            playsinline
-           preload="metadata"
-           poster="images/Leaf-no-glow.webp">
+           preload="auto"
+           poster="images/Leaf 2 Wide.webp">
       <!-- Adjust filenames as needed -->
-      <source src="images/background-ripples-slowed.webm" type="video/webm" />
       <source src="images/Background-ripples-slowed.mp4"  type="video/mp4" />
+      <source src="images/background-ripples-slowed.webm" type="video/webm" />
+
     </video>
 
     <!-- Transparent overlay above the video -->
@@ -44,8 +45,9 @@
   </div>
 
   <!-- Your existing hero content (unchanged) -->
-  <img src="images/420token-text.webp" alt="420token" class="hero-logo">
-  <img src="images/$CHRONIC TEXT LOGO.webp" alt="CHRONIC" class="hero-logo-sub">
+  <!-- <img src="images/420token-text.webp" alt="420token" class="hero-logo"> -->
+  <!-- <img src="images/$CHRONIC TEXT LOGO.webp" alt="CHRONIC" class="hero-logo-sub"> -->
+   <img src="images/full-logo.webp" alt="fullLogo" class="hero-logo">
 
   <a href="https://app.uniswap.org/swap?inputCurrency=ETH&outputCurrency=0xd996A4C4721037cA0AbB92c53d380aae0cBfD3ca&chain=base"
      target="_blank" class="buy-button">BUY</a>
@@ -56,6 +58,22 @@
     <p class="contract-address">CA: 0xd996A4C4721037cA0AbB92c53d380aae0cBfD3ca</p>
   </div>
 </section>
+
+<script type="module">
+  const v = document.querySelector('.hero__video');
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (v && !reduce) {
+    const tryPlay = () => v.play().catch(() => {/* fail silently; poster stays */});
+    // Ensure correct flags (some browsers ignore HTML attributes)
+    v.muted = true; v.playsInline = true;
+    if (v.readyState >= 1) tryPlay();
+    else v.addEventListener('loadedmetadata', tryPlay, { once:true });
+
+    // Re-apply on 'pause' (some iOS versions auto-pause on tab switch)
+    v.addEventListener('pause', () => { if (document.visibilityState === 'visible') tryPlay(); });
+  }
+</script>
 
   <!-- Tokenomics -->
   <section class="tokenomics">
