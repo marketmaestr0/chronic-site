@@ -112,9 +112,59 @@ body {
   }
   75% {
     filter:
-    drop-shadow(0 0 8px rgba(255, 179, 66, 0.7))
-    drop-shadow(0 0 15px rgba(138, 86, 6, 0.7));
+    drop-shadow(0 0 16px rgba(255, 179, 66, 0.7))
+    drop-shadow(0 0 30px rgba(138, 86, 6, 0.7));
   }
+}
+
+
+@media (max-width: 1000px){@keyframes leaf-overlay-glow {
+  0%, 100% {
+    filter:
+      drop-shadow(0 0 6px  rgba(7, 88, 18, 0.615))
+      drop-shadow(0 0 12px rgba(40, 173, 58, 0.427));
+  }
+  25% {
+    filter:
+      drop-shadow(0 0 10px rgba(200, 228, 17, 0.65))
+      drop-shadow(0 0 20px rgba(232, 255, 85, 0.65));
+  }
+  50% {
+    filter:
+    drop-shadow(0 0 6px  rgba(7, 88, 18, 0.615))
+    drop-shadow(0 0 12px rgba(40, 173, 58, 0.427));
+  }
+  75% {
+    filter:
+    drop-shadow(0 0 10px rgba(255, 179, 66, 0.65))
+    drop-shadow(0 0 20px rgba(138, 86, 6, 0.65));
+  }
+}
+}
+
+
+@media (max-width: 600px){@keyframes leaf-overlay-glow {
+  0%, 100% {
+    filter:
+      drop-shadow(0 0 4px  rgba(7, 88, 18, 0.565))
+      drop-shadow(0 0 8px rgba(40, 173, 58, 0.377));
+  }
+  25% {
+    filter:
+      drop-shadow(0 0 8px rgba(200, 228, 17, 0.6))
+      drop-shadow(0 0 15px rgba(232, 255, 85, 0.6));
+  }
+  50% {
+    filter:
+    drop-shadow(0 0 4px  rgba(7, 88, 18, 0.565))
+    drop-shadow(0 0 8px rgba(40, 173, 58, 0.377));
+  }
+  75% {
+    filter:
+    drop-shadow(0 0 8px rgba(255, 179, 66, 0.6))
+    drop-shadow(0 0 15px rgba(138, 86, 6, 0.6));
+  }
+}
 }
 
 /* Motion-friendly fallback */
@@ -161,7 +211,54 @@ body {
   }
 }
 
+@media (max-width: 1000px){@keyframes logo-overlay-glow {
+  0%, 100% {
+    filter:
+      drop-shadow(0 0 3px  rgba(7, 88, 18, 0.615))
+      drop-shadow(0 0 6px rgba(40, 173, 58, 0.227));
+  }
+  25% {
+    filter:
+      drop-shadow(0 0 6px rgba(200, 228, 17, 0.65))
+      drop-shadow(0 0 12px rgba(232, 255, 85, 0.65));
+  }
+  50% {
+    filter:
+    drop-shadow(0 0 3px  rgba(7, 88, 18, 0.615))
+    drop-shadow(0 0 6px rgba(40, 173, 58, 0.227));
+  }
+  75% {
+    filter:
+      drop-shadow(0 0 6px rgba(255, 179, 66, 0.65))
+      drop-shadow(0 0 12px rgba(138, 86, 6, 0.65));
+  }
+}
+}
 
+
+@media (max-width: 600px){@keyframes logo-overlay-glow {
+  0%, 100% {
+    filter:
+      drop-shadow(0 0 2px  rgba(7, 88, 18, 0.565))
+      drop-shadow(0 0 4px rgba(40, 173, 58, 0.177));
+  }
+  25% {
+    filter:
+      drop-shadow(0 0 4px rgba(200, 228, 17, 0.6))
+      drop-shadow(0 0 8px rgba(232, 255, 85, 0.6));
+  }
+  50% {
+    filter:
+    drop-shadow(0 0 2px  rgba(7, 88, 18, 0.565))
+    drop-shadow(0 0 4px rgba(40, 173, 58, 0.177));
+  }
+  75% {
+    filter:
+      drop-shadow(0 0 4px rgba(255, 179, 66, 0.6))
+      drop-shadow(0 0 8px rgba(138, 86, 6, 0.6));
+  }
+}
+}
 
 .hero-logo-sub {
   display: block;
@@ -257,6 +354,8 @@ body {
   font-family: 'Goldman', sans-serif;
   cursor: pointer;
 }
+
+
 /* Tokenomics */
 .tokenomics {
   padding: 80px 20px;
