@@ -55,7 +55,6 @@ body {
   justify-content: center;
   text-align: center;
   gap: 1rem;
-  /* background: url("images/Leaf 2 Wide.webp") no-repeat center / cover;  <-- remove */
 }
 
 /* Background container */
@@ -134,20 +133,20 @@ body {
 }
 
 .hero-logo {
-  display: block;
-  max-width: 50rem;    /* scales down on small screens */
-  height: auto;
-  display: inline-block;              /* helps with layout quirks */
-  filter: drop-shadow(0 0 9px rgb(0, 0, 0));
+  display: block;              /* you don't need inline-block inside a flex parent */
+  width: 100%;                 /* fill available space */
+  max-width: 50rem;            /* but never exceed 50rem */
+  height: auto;                /* keep aspect ratio */
+  filter: drop-shadow(0 0 9px #000);
 }
 
 
 .hero-logo-sub {
   display: block;
-  max-width: 25rem;    /* scales down on small screens */
+  width: 100%;
+  max-width: 25rem;            /* but never exceed 25rem */
   height: auto;
-  display: inline-block;              /* helps with layout quirks */
-  filter: drop-shadow(0 0 9px rgb(0, 0, 0));
+  filter: drop-shadow(0 0 9px #000);
 }
 
 /* Buy button */
@@ -201,6 +200,7 @@ body {
   display: inline-block;
   cursor: pointer;
   position: relative;
+  margin-bottom: 1rem;
 }
 
 /* small “Copied!” feedback */
